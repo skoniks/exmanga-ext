@@ -17,4 +17,10 @@
   background: #171717;
   border: 1px solid #292929;
   border-radius: 10px;
+  transition: opacity 0.2s ease;
+  opacity: 0;
+}
+
+.notify-container > *.show {
+  opacity: 1;
 }

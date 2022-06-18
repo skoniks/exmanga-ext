@@ -1,7 +1,7 @@
 {
   "name": "ExManga",
-  "description": "",
-  "version": "3.0",
+  "description": "Расширение дает возможность всем читать платные главы на сайте remanga.org, если их уже купил один из пользователей расширения",
+  "version": "3.1",
   "manifest_version": 3,
   "icons": {
     "16": "/images/icon_16.png",
@@ -18,7 +18,12 @@
       "128": "/images/icon_white_128.png"
     }
   },
-  "host_permissions": ["*://*.remanga.org/*", "*://*.реманга.орг/*"],
+  "host_permissions": [
+    "*://*.remanga.org/*",
+    "*://*.реманга.орг/*",
+    "*://*.exmanga.ru/*",
+    "*://raw.githubusercontent.com/*"
+  ],
   "content_scripts": [
     {
       "run_at": "document_start",
@@ -27,12 +32,12 @@
         "*://remanga.org/*",
         "*://реманга.орг/*"
       ],
-      "css": ["content.css"],
-      "js": ["content.js"]
+      "css": ["./styles/content.css"],
+      "js": ["./scripts/content.js"]
     }
   ],
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "./scripts/background.js"
   },
   "externally_connectable": {
     "matches": [
