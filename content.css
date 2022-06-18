@@ -1,0 +1,20 @@
+.notify-container {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  color: #fff;
+  font-size: 16px;
+  position: fixed;
+  z-index: 3000;
+  right: 10px;
+  top: 10px;
+}
+
+.notify-container > * {
+  width: fit-content;
+  padding: 10px 20px;
+  margin-bottom: 5px;
+  background: #171717;
+  border: 1px solid #292929;
+  border-radius: 10px;
+}

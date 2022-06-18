@@ -1,0 +1,107 @@
+body {
+  color: #f2f2f2;
+  background: #121212;
+  padding: 20px;
+  width: 300px;
+  font-size: 16px;
+}
+
+.header {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.header svg {
+  fill: #f2f2f2;
+  width: 1em;
+  height: 1em;
+  vertical-align: top;
+  display: inline-block;
+  padding-top: 5px;
+}
+
+.update {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 20px;
+}
+
+.update svg {
+  fill: #fff;
+  width: 1em;
+  height: 1em;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.list .item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  gap: 20px;
+}
+
+.list .item .chapter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.list .item .chapter span {
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.list .item .chapter svg {
+  fill: #fff;
+  width: 1em;
+  height: 1em;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+p {
+  text-align: justify;
+}
+
+a {
+  color: aqua;
+  cursor: pointer;
+}
+
+.spin {
+  -webkit-animation: spin 2s infinite linear;
+  animation: spin 2s infinite linear;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
