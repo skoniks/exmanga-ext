@@ -1,7 +1,7 @@
 {
   "name": "ExManga",
   "description": "Расширение дает возможность всем читать платные главы на сайте remanga.org, если их уже купил один из пользователей расширения",
-  "version": "3.1",
+  "version": "3.2",
   "manifest_version": 3,
   "icons": {
     "16": "/images/icon_16.png",
