@@ -1,7 +1,10 @@
 const load = document.getElementById('update');
+const search = document.getElementById('search');
+const prev = document.getElementById('prev');
 const next = document.getElementById('next');
 const list = document.querySelector('.list');
-var total = 0;
+var timeout = null;
+var page = 0;
 
 const template = (item) => `
 <li class="item">
@@ -19,36 +22,56 @@ const template = (item) => `
 </li>
 `;
 
-const update = () => {
-  total = 0;
+function reset() {
+  page = 0;
   list.innerHTML = '';
+  update();
+}
+
+function back() {
+  page--;
+  update();
+}
+
+function forv() {
+  page++;
+  update();
+}
+
+function input() {
+  page = 0;
+  if (timeout !== null) {
+    clearTimeout(timeout);
+    timeout = null;
+  }
+  timeout = setTimeout(update, 400);
+}
+
+function update() {
   load.className = 'spin';
-  fetch(`https://exmanga.ru/chapter/updates?skip=${total}`)
+  page = Math.max(page, 0);
+  const params = new URLSearchParams();
+  params.append('skip', page * 10);
+  if (search.value) params.append('name', search.value);
+  fetch(`https://exmanga.ru/chapter/updates?${params.toString()}`)
     .then((response) => response.json())
     .then(({ success, data }) => {
-      load.className = '';
-      if (!success) return;
-      for (const item of data) {
-        list.innerHTML += template(item);
-        total++;
+      if ((!success || !data.length) && !search.value) {
+        page--;
+        return;
       }
-    });
-};
-const skip = () => {
-  load.className = 'spin';
-  fetch(`https://exmanga.ru/chapter/updates?skip=${total}`)
-    .then((response) => response.json())
-    .then(({ success, data }) => {
-      load.className = '';
-      if (!success || !data.length) return;
       list.innerHTML = '';
       for (const item of data) {
         list.innerHTML += template(item);
-        total++;
       }
+    })
+    .finally(() => {
+      load.className = '';
     });
-};
+}
 
-window.onload = update;
-load.onclick = update;
-next.onclick = skip;
+window.onload = reset;
+load.onclick = reset;
+next.onclick = forv;
+prev.onclick = back;
+search.oninput = input;

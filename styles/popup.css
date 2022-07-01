@@ -1,8 +1,13 @@
+html {
+  box-shadow: inset 0 0 0 1px #313131
+}
+
 body {
   color: #f2f2f2;
   background: #121212;
   padding: 20px;
-  width: 300px;
+  margin: 0;
+  width: 305px;
   font-size: 16px;
 }
 
@@ -25,7 +30,35 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 20px;
+  gap: 2px;
+}
+
+.update input {
+  width: 100%;
+  color: #f2f2f2;
+  padding: 8px 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  background: #171717;
+  border: none;
+  margin-right: 10px;
+}
+
+.update input:hover,
+.update input:focus {
+  outline: none;
+}
+
+.update a {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  background: #121212;
+  transition: background-color 0.2s ease;
+}
+
+.update a:hover {
+  background: #171717;
 }
 
 .update svg {
@@ -35,8 +68,13 @@ body {
 }
 
 .list {
+  background: #171717;
+  height: 280px;
+  padding: 10px;
   list-style: none;
-  padding: 0;
+  border-radius: 10px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .list .item {
@@ -104,4 +142,27 @@ a {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(170, 170, 170, 0.6);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
+::-webkit-resizer {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
 }

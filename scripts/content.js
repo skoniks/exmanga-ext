@@ -23,6 +23,10 @@ window.fetch = (...request) => {
       document.body.appendChild(container);
     }
     container.appendChild(element);
+    element.onclick = () => {
+      element.className = '';
+      setTimeout(() => element.remove(), 200);
+    }
     setTimeout(() => {
       element.className = 'show';
     }, 100);
