@@ -35,7 +35,9 @@ const listener = ({ request, location }, sender, callback) => {
                 .then((response) => response.json())
                 .then(({ success, data }) => {
                   if (success) {
-                    console.log(`Chapter ${match[1]} - Loaded`);
+                    console.log(
+                      `Chapter ${match[1]} - Глава получена с сервера`,
+                    );
                     delete body.content.volume;
                     body.content.is_bought = true;
                     body.content.pages = data;
@@ -46,9 +48,9 @@ const listener = ({ request, location }, sender, callback) => {
                     callback({ body, type, init, message });
                     !DEBUG || console.log(url, body, init);
                   } else {
-                    console.log(`Chapter ${match[1]} - Not found`);
+                    console.log(`Chapter ${match[1]} - ${data}`);
                     body = JSON.stringify(body);
-                    const message = '[ExManga] Глава отсутствует на сервере';
+                    const message = `[ExManga] ${data}`;
                     callback({ body, type, init, message });
                     !DEBUG || console.log(url, body, init);
                   }

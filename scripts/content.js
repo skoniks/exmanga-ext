@@ -1,5 +1,7 @@
 console.log('ExManga loaded');
 
+const AUTOUPDATE = true;
+
 var preload = `
 window.fetch = (...request) => {
   const sendMessage = (resolve, ...request) => {
@@ -58,7 +60,8 @@ document.documentElement.dispatchEvent(new CustomEvent('reset'));
 document.documentElement.removeAttribute('onreset');
 
 window.onload = () => {
-  // Check updates
+  // Check updates from github
+  if (!AUTOUPDATE) return;
   const url =
     'https://raw.githubusercontent.com/skoniks/exmanga-ext/master/manifest.json';
   const local = chrome.runtime.getManifest();
